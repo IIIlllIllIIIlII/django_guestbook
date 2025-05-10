@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guestbook</title>
+</head>
+<body>
+    <h1>Guestbook</h1>
+    <table>
+        <thead>
+            <th>번호</th>
+            <th>닉네임</th>
+            <th>내용</th>
+            <th>작성시간</th>
+        </thead>
+        <tbody>
+            {% for value in count %}
+            <tr>
+                <td>{{ value }}</td>
+                <td>{{ value }}번째 작성자</td>
+                <td>{{ value }}번째 글!</td>
+                <td>몰?루</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>방명록 작성</h3>
+    <form action="{% url 'index' %}" method="post">
+        {% csrf_token %}
+        <label for="nickname">닉네임</label>
+        <input type="text" name="nickname" id="">
+        <br>
+        <label for="content">내용</label>
+        <textarea name="content" id=""></textarea>
+        <br>
+        <button type="submit">글쓰기</button>
+    </form>
+</body>
+</html>
