@@ -15,12 +15,12 @@
             <th>작성시간</th>
         </thead>
         <tbody>
-            {% for value in count %}
+            {% for id, nickname, content, datetime in articles %}
             <tr>
-                <td>{{ value }}</td>
-                <td>{{ value }}번째 작성자</td>
-                <td>{{ value }}번째 글!</td>
-                <td>몰?루</td>
+                <td>{{ id }}</td>
+                <td>{{ nickname }}</td>
+                <td>{{ content }}</td>
+                <td>{{ datetime }}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -28,13 +28,8 @@
     <h3>방명록 작성</h3>
     <form action="{% url 'index' %}" method="post">
         {% csrf_token %}
-        <label for="nickname">닉네임</label>
-        <input type="text" name="nickname" id="">
-        <br>
-        <label for="content">내용</label>
-        <textarea name="content" id=""></textarea>
-        <br>
-        <button type="submit">글쓰기</button>
+        {{ form }}
+        <input type="submit" value="글쓰기"></input>
     </form>
 </body>
 </html>
